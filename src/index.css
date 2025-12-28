@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 20%;
+
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    --primary: 211 100% 50%;
+    /* Electric Blue #007BFF */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 211 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 211 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --lime: 211 100% 50%;
+    /* Reusing variable name but mapping to blue for compatibility */
+    --lime-glow: 211 100% 70%;
+    --dark-surface: 0 0% 98%;
+    --dark-card: 0 0% 96%;
+    --text-muted: 0 0% 40%;
+
+    /* Gradients */
+    --gradient-lime: linear-gradient(135deg, hsl(211 100% 50%), hsl(211 100% 60%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 96%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 95%));
+
+    /* Shadows */
+    --shadow-lime: 0 0 30px hsl(211 100% 50% / 0.2);
+    --shadow-card: 0 10px 40px hsl(0 0% 0% / 0.05);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 211 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 211 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#76e600];
+  }
+
+  .glow-lime {
+    box-shadow: var(--shadow-lime);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-lime);
+  }
+
+  .card-gradient {
+    background: var(--gradient-card);
+  }
+
+  .asterisk-decoration {
+    @apply text-primary text-4xl font-bold;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4 flex items-center gap-3;
+  }
+
+  .section-title::before {
+    content: '✦';
+    @apply text-primary;
+  }
+
+  .italic-accent {
+    @apply font-serif italic text-primary;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
